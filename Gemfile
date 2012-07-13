@@ -5,8 +5,22 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
 
+# View generators gems
+gem 'haml'
+gem 'haml-rails', :group => :development
+gem 'simple_form'
+
+# Testing frameworks
+group :test do
+  gem 'database_cleaner'
+  gem 'rails3-generators', :git => "https://github.com/neocoin/rails3-generators.git"
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'cucumber-rails'
+  gem 'capybara'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
