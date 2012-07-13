@@ -5,6 +5,10 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+# Crypting utility
+gem "bcrypt-ruby", :require => "bcrypt"
+
+#Database gem
 gem 'mysql2'
 
 # View generators gems
@@ -13,13 +17,14 @@ gem 'haml-rails', :group => :development
 gem 'simple_form'
 
 # Testing frameworks
-group :test do
+group :development, :test do
   gem 'database_cleaner'
   gem 'rails3-generators', :git => "https://github.com/neocoin/rails3-generators.git"
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'cucumber-rails'
   gem 'capybara'
+  gem "shoulda-matchers"
 end
 
 # Gems used only for assets and not required

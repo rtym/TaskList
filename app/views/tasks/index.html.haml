@@ -4,6 +4,7 @@
   %tr
     %th Caption
     %th Description
+    %th Full Name
     %th
     %th
     %th
@@ -12,6 +13,7 @@
     %tr
       %td= task.caption
       %td= task.description
+      %td= task.user.full_name
       %td= link_to 'Show', task
       %td= link_to 'Edit', edit_task_path(task)
       %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete

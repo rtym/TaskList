@@ -2,7 +2,9 @@
 
 FactoryGirl.define do
   factory :task do
-    caption "MyString"
-    description "MyText"
+    sequence(:id){ |n| n }
+    caption "Test Caption"
+    description "Test Text"
+    user {FactoryGirl.build(:user)}
   end
 end

@@ -1,5 +1,5 @@
 require 'spec_helper'
 
-describe TasksHelper do
+describe UsersHelper do
 
 end

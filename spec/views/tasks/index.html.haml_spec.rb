@@ -2,22 +2,20 @@ require 'spec_helper'
 
 describe "tasks/index" do
   before(:each) do
+    @task = FactoryGirl.build(:task)
+    @values = {:caption => @task.caption, :description => @task.description, :user => @task.user}
+
     assign(:tasks, [
-      stub_model(Task,
-        :caption => "Caption",
-        :description => "MyText"
-      ),
-      stub_model(Task,
-        :caption => "Caption",
-        :description => "MyText"
-      )
+      stub_model(Task, @values),
+      stub_model(Task, @values)
     ])
   end
 
   it "renders a list of tasks" do
     render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    assert_select "tr>td", :text => "Caption".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
+
+    assert_select "tr>td", :text => @task.caption, :count => 2
+    assert_select "tr>td", :text => @task.description, :count => 2
+    assert_select "tr>td", :text => @task.user.full_name, :count => 2
   end
 end
