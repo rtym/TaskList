@@ -1,12 +1,12 @@
 %p#notice= notice
 
-%p
-  %b Caption:
-  = @task.caption
-%p
-  %b Description:
-  = @task.description
-
 = link_to 'Edit', edit_task_path(@task)
 \|
 = link_to 'Back', tasks_path
+
+%h1 Caption:
+%p= @task.caption
+%h2 Responsible person
+%p= @task.user.full_name
+%h3 Description
+%p= @task.description

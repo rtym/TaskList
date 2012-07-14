@@ -2,17 +2,17 @@ require 'spec_helper'
 
 describe "tasks/show" do
   before(:each) do
-    #@task_factory = FactoryGirl.build(:task)
-    #@task = assign(:task, stub_model(Task, @task_factory))
+    @task = FactoryGirl.build(:task)
+    @values = {:caption => @task.caption, :description => @task.description, :user => @task.user}
 
-    #puts @task.to_json.to_s
-
+    assign(:task, stub_model(Task, @values))
   end
 
   it "renders attributes in <p>" do
-    #render
-    # Run the generator again with the --webrat flag if you want to use webrat matchers
-    #rendered.should match(/Caption/)
-    #rendered.should match(/MyText/)
+    render
+
+    rendered.should match(@task.caption)
+    rendered.should match(@task.user.full_name)
+    rendered.should match(@task.description)
   end
 end

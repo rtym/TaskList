@@ -1,22 +1,21 @@
 %h1 Listing tasks
 
-%table
-  %tr
-    %th Caption
-    %th Description
-    %th Full Name
-    %th
-    %th
-    %th
-
-  - @tasks.each do |task|
+%div{:id => :data_container}
+  %table
     %tr
-      %td= task.caption
-      %td= task.description
-      %td= task.user.full_name
-      %td= link_to 'Show', task
-      %td= link_to 'Edit', edit_task_path(task)
-      %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
+      %th Caption
+      %th Full Name
+      %th
+      %th
+      %th
+
+    - @tasks.each do |task|
+      %tr
+        %td= task.caption
+        %td= task.user.full_name
+        %td= link_to 'Show', task
+        %td= link_to 'Edit', edit_task_path(task)
+        %td= link_to 'Destroy', task, :confirm => 'Are you sure?', :method => :delete
 
 %br
 
