@@ -16,6 +16,8 @@ gem 'haml'
 gem 'haml-rails', :group => :development
 gem 'simple_form'
 
+gem 'thinking-sphinx', '2.0.10'
+
 # Testing frameworks
 group :development, :test do
   gem 'database_cleaner'
