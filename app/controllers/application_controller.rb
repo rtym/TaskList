@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authenticated?
-    !session[:user_id].blank?
+    !session[:user_id].blank? && session[:expire_time] > Time.now
   end
 
   def check_authentication
