@@ -16,17 +16,18 @@ gem 'haml'
 gem 'haml-rails', :group => :development
 gem 'simple_form'
 
-gem 'thinking-sphinx', '2.0.10'
-
 # Testing frameworks
 group :development, :test do
-  gem 'database_cleaner'
   gem 'rails3-generators', :git => "https://github.com/neocoin/rails3-generators.git"
+  gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem "shoulda-matchers"
+end
+
+group :test do
   gem 'cucumber-rails'
   gem 'capybara'
-  gem "shoulda-matchers"
 end
 
 # Gems used only for assets and not required

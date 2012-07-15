@@ -26,14 +26,6 @@ class User < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :surname
 
-  define_index do
-    indexes name
-    indexes surname
-    indexes email
-
-    set_property :delta => true
-  end
-
   def self.authenticate(email, password)
     user = find_by_email(email)
     if user && user.password_hash == BCrypt::Engine.hash_secret(password, user.password_salt)
