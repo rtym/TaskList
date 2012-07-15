@@ -1,0 +1,51 @@
+require "./lib/capistrano_ts"
+
+default_run_options[:pty] = true
+ssh_options[:forward_agent] = true
+
+set :application, "taskslist.tymoshuk.net"
+set :repository, "git@github.com:rtym/TaskList.git"
+set :scm, :git
+set :deploy_via, :remote_cache
+set :keep_releases, 10
+set :branch, "master"
+set :user, "deployer"
+set :password, "" #set password for remote server
+set :use_sudo, true
+set :deploy_to, "/srv/http/#{application}/"
+
+task :prod do
+  web_server = "#{application}"
+  role :web, web_server # Your HTTP server, Apache/etc
+  role :app, web_server # This may be the same as your `Web` server
+  role :db, web_server, :primary => true # This is where Rails migrations will run
+end
+
+namespace :deploy do
+  desc "Tell Passenger to restart the app."
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+
+  task :bundle_update, :roles => :app do
+    run "cd #{release_path} && bundle update"
+  end
+
+  task :bundle_install, :roles => :app do
+    run "cd #{release_path} && bundle install"
+  end
+
+  desc "Symlink shared configs and folders on each release."
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/database.yml #{release_path}/config/database.yml"
+  end
+
+  desc "Precompiling assets"
+  task :precompile_assets do
+    run "cd #{release_path} &&  bundle exec rake assets:precompile"
+  end
+end
+
+after 'deploy:update_code', 'deploy:bundle_install'
+after 'deploy:update_code', 'deploy:symlink_shared'
+after 'deploy:update_code', 'deploy:precompile_assets'
