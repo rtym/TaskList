@@ -3,15 +3,12 @@ TaskList::Application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "users#new", :as => "sign_up"
 
-  resources :tasks do
-    collection do
-      get :search_user
-    end
-  end
+  resources :tasks
 
   resources :users do
     collection do
       get :new
+      get :search
     end
   end
 
