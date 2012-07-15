@@ -10,5 +10,10 @@
   = form.input :caption, :label => 'Caption'
   = form.input :description, :label => 'Description'
 
+  %div{:class => "ui-widget"}
+    %label{:for => "tags"}
+      Tags
+    %input{:id => "tags"}
+
   .actions
     = form.button :submit

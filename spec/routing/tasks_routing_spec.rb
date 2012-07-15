@@ -31,6 +31,10 @@ describe TasksController do
       delete("/tasks/1").should route_to("tasks#destroy", :id => "1")
     end
 
+    it "routes to #search_user" do
+      get("/tasks/search_user").should route_to("tasks#search_user")
+    end
+
     it "routes to #log_out" do
       get("log_out").should route_to("sessions#destroy")
     end

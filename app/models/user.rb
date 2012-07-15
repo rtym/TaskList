@@ -1,5 +1,16 @@
 class User < ActiveRecord::Base
-  attr_accessible :id, :created_at, :updated_at, :name, :surname, :email, :password, :password_hash, :password_salt, :password_confirmation
+  attr_accessible :id,
+                  :created_at,
+                  :updated_at,
+                  :name,
+                  :surname,
+                  :email,
+                  :password,
+                  :password_hash,
+                  :password_salt,
+                  :password_confirmation,
+                  :user_id
+
   attr_accessor :password
 
   has_many :tasks
@@ -41,6 +52,10 @@ class User < ActiveRecord::Base
 
   def full_name
     name + ' ' + surname
+  end
+
+  def self.search_user query, limit = 5
+    where(%Q{`name` LIKE '%#{query}%' OR `surname` LIKE '%#{query}%'}).limit(limit)
   end
 end
 

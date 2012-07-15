@@ -6,11 +6,11 @@ describe TasksController do
   end
 
   def valid_attributes
-    {:caption => @task.caption, :description => @task.description}
+    {:caption => @task.caption, :description => @task.description, :user_id => 1}
   end
 
   def valid_session
-    {:user_id => FactoryGirl.build(:user).id}
+    {:user_id => FactoryGirl.build(:user).id, :expire_time => 20.minutes.seconds.from_now}
   end
 
   describe "GET index" do

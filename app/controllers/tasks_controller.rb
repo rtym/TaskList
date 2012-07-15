@@ -82,4 +82,12 @@ class TasksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def search_user
+    if request.xhr?
+      @users = User.search_user(params[:term]).map{|element| {:id => element.id, :value => %Q{#{element.name} #{element.surname}}}}
+
+      render :json => @users
+    end
+  end
 end
