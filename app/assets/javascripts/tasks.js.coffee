@@ -4,5 +4,7 @@ update_content = () ->
 $.timer({ action: update_content, time :3000, autostart : true });
 
 $(document).ready ->
-  $("#tags").autocomplete
-    source: "search_user"
+  $("#user_name").autocomplete
+    source: "/tasks/search_user"
+    select: (event, ui) ->
+      $('#task_user_id').val(ui.item.id)

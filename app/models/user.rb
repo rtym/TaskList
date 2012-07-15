@@ -8,8 +8,7 @@ class User < ActiveRecord::Base
                   :password,
                   :password_hash,
                   :password_salt,
-                  :password_confirmation,
-                  :user_id
+                  :password_confirmation
 
   attr_accessor :password
 

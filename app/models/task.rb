@@ -1,5 +1,10 @@
 class Task < ActiveRecord::Base
-  attr_accessible :id, :created_at, :updated_at, :caption, :description
+  attr_accessible :id,
+                  :created_at,
+                  :updated_at,
+                  :caption,
+                  :description,
+                  :user_id
 
   belongs_to :user
 

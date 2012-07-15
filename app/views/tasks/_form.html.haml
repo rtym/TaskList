@@ -10,10 +10,13 @@
   = form.input :caption, :label => 'Caption'
   = form.input :description, :label => 'Description'
 
-  %div{:class => "ui-widget"}
-    %label{:for => "tags"}
-      Tags
-    %input{:id => "tags"}
+  %div{:class => "ui-widget input string required"}
+    %label{:for => "user", :class => "text required control-label"}
+      %abbr{:title => "required"}
+        *
+      User
+    = hidden_field_tag("task[user_id]", @task.user.id)
+    %input{:id => "user_name", :name =>"task_user_name", :class => "string required", :value => @task.user.full_name}
 
   .actions
     = form.button :submit
