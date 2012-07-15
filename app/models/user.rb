@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => true,
             :length => {:minimum => 3, :maximum => 254},
             :uniqueness => true,
-            :format => {:with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i}
+            :format => {:with => /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i}
   validates_confirmation_of :password
   validates_presence_of :password
   validates_presence_of :name

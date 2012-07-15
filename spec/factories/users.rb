@@ -5,7 +5,7 @@ FactoryGirl.define do
     sequence(:id){ |n| n }
     name "John"
     surname "Smith"
-    email "john_smith@test.com"
+    sequence(:email){ |n| %Q{john#{n}_smith@test.com} }
     password "test"
     password_confirmation "test"
   end

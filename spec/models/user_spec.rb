@@ -20,9 +20,9 @@ describe User do
     end
 
     it "should prevent creating duplicates" do
-      FactoryGirl.create(:user)
+      user = FactoryGirl.create(:user)
 
-      FactoryGirl.build(:user).should_not be_valid
+      FactoryGirl.build(:user, :email => user.email).should_not be_valid
     end
 
     it "should be invalid without incorrect email" do
@@ -30,6 +30,7 @@ describe User do
       should_not allow_value("test@test").for(:email)
       should_not allow_value("@test").for(:email)
       should_not allow_value("1@test").for(:email)
+      should allow_value("test1990@test.com").for(:email)
     end
   end
 

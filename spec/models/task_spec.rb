@@ -11,7 +11,7 @@ describe Task do
     it "should validate presence of" do
       should validate_presence_of :caption
       should validate_presence_of :description
-      should validate_presence_of :user
+      should validate_presence_of :user_id
     end
   end
 end
