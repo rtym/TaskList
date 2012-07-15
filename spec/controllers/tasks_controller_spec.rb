@@ -6,7 +6,7 @@ describe TasksController do
   end
 
   def valid_attributes
-    {:caption => @task.caption, :description => @task.description, :user_id => 1}
+    {:caption => @task.caption, :description => @task.description, :user => @task.user}
   end
 
   def valid_session

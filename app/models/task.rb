@@ -4,7 +4,8 @@ class Task < ActiveRecord::Base
                   :updated_at,
                   :caption,
                   :description,
-                  :user_id
+                  :user_id,
+                  :user
 
   belongs_to :user
 

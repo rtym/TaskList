@@ -5,6 +5,6 @@ FactoryGirl.define do
     sequence(:id){ |n| n }
     caption "Test Caption"
     description "Test Text"
-    user {FactoryGirl.build(:user)}
+    user
   end
 end
